@@ -12,8 +12,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter @Setter
 public class Airport {
     @Id
-    @Column(name = "state_id")
-    private Integer stateId;
+    @Column(name = "airport_id")
+    private Integer airportId;
 
     @Column(name = "state_name")
     private String stateName;
@@ -29,17 +29,33 @@ public class Airport {
     @NotNull
     private String stationName;
 
+    //CONSTRUCTORS
+
     public Airport(String stateName, String stateShort, @NotNull String country, @NotNull String stationName) {
-        this.stateId = idGenerator();
+        this.airportId = idGenerator();
         this.stateName = stateName;
         this.stateShort = stateShort;
         this.country = country;
         this.stationName = stationName;
     }
 
+    public Airport(String stateName, String stateShort, @NotNull String country, @NotNull String stationName, Integer airportId) {
+        this.stateName = stateName;
+        this.stateShort = stateShort;
+        this.country = country;
+        this.stationName = stationName;
+        this.airportId = airportId;
+    }
+
+    public Airport(){
+
+    }
+
+    //CONSTRUCTORS END
+
     //GETTER
-    public Integer getStateId() {
-        return stateId;
+    public Integer getAirportId() {
+        return airportId;
     }
 
     public String getStateName() {
@@ -61,8 +77,8 @@ public class Airport {
 
     //SETTER
 
-    public void setStateId(Integer stateId) {
-        this.stateId = stateId;
+    public void setAirportId(Integer airportId) {
+        this.airportId = airportId;
     }
 
     public void setStateName(String stateName) {
@@ -85,13 +101,10 @@ public class Airport {
 
     //FUNCTIONS
 
-    public Airport(){
-
-    }
 
     private static final Random random = new Random();
 
-    private Integer idGenerator(){
+    public static Integer idGenerator(){
         int min = 10000000;
         int max = 99999999;
         return random.nextInt((max - min) + 1) + min;

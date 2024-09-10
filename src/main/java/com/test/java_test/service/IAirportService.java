@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IAirportService {
     List<AirportDto> getAllAirports();
+    AirportDto getAirport(Integer airportId);
+    void addAirport(AirportDto airportDto);
 }
