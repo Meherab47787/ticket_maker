@@ -78,8 +78,6 @@ public class AirportDataLoader {
 
             List<Ticket> tickets = List.of(ticket1, ticket2);
             ticketRepository.saveAll(tickets);
-
-
         };
 
     }
